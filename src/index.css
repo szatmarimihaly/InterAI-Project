@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@layer utilities{
+
+  .sign-input input{
+    background: transparent;
+  }
+
+  .sign-input input:focus{
+    outline : none;
+  }
+
+  .navbar-backg{
+    background: black;
+  }
+
+  .purple-shadow{
+    box-shadow : 10px 0 30px rgba(75, 0, 130, 0.6);
+  }
+
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #000; 
+  color: whitesmoke; 
+  font-family: 'Fira Sans', sans-serif;
+  min-height: 100vh; 
+}
+
+h1 {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 500;
+}
