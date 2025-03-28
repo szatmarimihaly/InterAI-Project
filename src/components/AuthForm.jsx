@@ -3,9 +3,10 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const AuthForm = ({ text, alreadyOrNot, RouteToButton }) => {
+const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const [isVisible, setIsVisible] = useState(false);
     const navigate = useNavigate();
 
@@ -15,6 +16,7 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError("");
         try {
             if (text === "Sign Up") {
                 await createUserWithEmailAndPassword(auth, email, password);
@@ -24,7 +26,13 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton }) => {
             navigate("/dashboard");
         } catch (error) {
             console.log(error);
-            alert("Hibás email vagy jelszó!");
+            if (text === "Sign Up" && error.code === "auth/email-already-in-use") {
+                setError("Email is already in use.");
+            } else if (text === "Sign In" && error.code === "auth/invalid-credential") {
+                setError("Invalid email or password.");
+            } else {
+                setError("An error occurred. Please try again.");
+            }
         }
     };
 
@@ -56,6 +64,7 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton }) => {
                                 {isVisible ? <i className="ri-eye-off-fill"></i> : <i className="ri-eye-fill"></i>}
                         </button>
                     </div>
+                    {error && <p className="text-red-500 mt-4 mb-4 text-sm text-center">{error}</p>}
                     <button 
                         type="submit"
                         className="text-white bg-gray-800 transition duration-300 ease-in-out hover:bg-gray-600 w-full rounded-lg h-10">
@@ -64,7 +73,7 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton }) => {
                 </form>
                 <div className="flex gap-2 mt-4 items-center justify-center items-center"> 
                     <p>{alreadyOrNot}</p>
-                    <button className="bold">{RouteToButton}</button>
+                    <button className="bold" onClick={onClick}>{RouteToButton}</button>
                 </div>
             </div>
         </div>
