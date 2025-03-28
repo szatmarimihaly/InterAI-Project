@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import { auth } from "./firebase";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const RequireAuth = ({ children }) => {
     const [user, setUser] = useState(undefined);
@@ -16,7 +17,7 @@ const RequireAuth = ({ children }) => {
         return () => unsubscribe();
     }, []);
 
-    if (user === undefined) return <p>Loading...</p>;
+    if (user === undefined) return <LoadingSpinner />;
     return user ? children : <Navigate to="/sign-in" />;
 };
 
