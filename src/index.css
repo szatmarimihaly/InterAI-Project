@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
+@plugin "daisyui";
 
 @layer utilities {
   .loader {
@@ -13,6 +14,17 @@
     animation: rotation 1s linear infinite;
   }
 
+  .hero-gradient {
+    background: linear-gradient(
+      to right,
+      oklch(0.714 0.203 305.504),
+      oklch(0.591 0.293 322.896),
+      oklch(0.577 0.245 27.325),
+      oklch(0.704 0.191 22.216)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   .sign-input input {
     background: transparent;
   }
@@ -57,19 +69,8 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 1.875rem; /* text-3xl */
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 1.5rem; /* text-2xl */
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 500;
+html {
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {

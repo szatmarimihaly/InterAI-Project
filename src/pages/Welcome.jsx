@@ -4,8 +4,9 @@ import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import LoadingSpinner from "../components/LoadingSpinner";
 import HeroSection from "../components/HeroSection";
+import Navbar from "../components/Navbar";
 
-const Dashboard = () => {
+const Welcome = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const Dashboard = () => {
 
                 setTimeout(() => {
                     setLoading(false);
-                }, 4000); 
+                }, 1000); 
             } else {
                 navigate("/sign-in");
             }
@@ -38,10 +39,11 @@ const Dashboard = () => {
     const username = user.email.split("@")[0];
 
     return (
-        <div className="h-100 lg:min-h-screen flex flex-col lg:flex-row md:flex-row text-white">
+        <div className="flex flex-col items-center mr-4 ml-4">
+            <Navbar username={username}/>
             <HeroSection />
         </div>
     );
 };
 
-export default Dashboard;
+export default Welcome;
