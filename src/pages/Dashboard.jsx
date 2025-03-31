@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
-import DashboardNav from "../components/DashboardNav";
 import LoadingSpinner from "../components/LoadingSpinner";
+import HeroSection from "../components/HeroSection";
 
 const Dashboard = () => {
     const [user, setUser] = useState(null);
@@ -38,8 +38,8 @@ const Dashboard = () => {
     const username = user.email.split("@")[0];
 
     return (
-        <div className="min-h-screen flex flex-col lg:flex-row md:flex-row text-white">
-            <DashboardNav onClick={handleLogout} username={username} />
+        <div className="h-100 lg:min-h-screen flex flex-col lg:flex-row md:flex-row text-white">
+            <HeroSection />
         </div>
     );
 };

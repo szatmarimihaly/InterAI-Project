@@ -71,7 +71,7 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
                         {text}
                     </button>
                 </form>
-                <div className="flex gap-2 mt-4 items-center justify-center items-center"> 
+                <div className="flex gap-2 mt-4 items-center justify-center"> 
                     <p>{alreadyOrNot}</p>
                     <button className="bold" onClick={onClick}>{RouteToButton}</button>
                 </div>

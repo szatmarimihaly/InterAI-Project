@@ -1,56 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 
-@layer utilities{
-
+@layer utilities {
   .loader {
     width: 48px;
     height: 48px;
     border-radius: 50%;
     display: inline-block;
-    border-top: 3px solid #6b0494;
+    border-top: 3px solid #fff;
     border-right: 3px solid transparent;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
   }
-  
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  } 
-   
 
-  .sign-input input{
+  .sign-input input {
     background: transparent;
   }
 
-  .sign-input input:focus{
-    outline : none;
+  .sign-input input:focus {
+    outline: none;
   }
 
-  .navbar-backg{
+  .navbar-backg {
     background: black;
   }
 
-  .purple-shadow{
-    box-shadow : 10px 0 30px #a321ff99;
+  .purple-shadow {
+    box-shadow: 10px 0 30px #a321ff99;
   }
-
 }
 
+.custom-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #000; 
-  color: whitesmoke; 
-  font-family: 'Fira Sans', sans-serif;
-  min-height: 100vh; 
+  background: #000;
+  color: whitesmoke;
+  font-family: "Fira Sans", sans-serif;
+  min-height: 100vh;
 }
 
 h1 {
@@ -66,4 +70,48 @@ h2 {
 h3 {
   font-size: 1.25rem; /* text-xl */
   font-weight: 500;
+}
+
+::-webkit-scrollbar {
+  width: 6px; /* Vékony */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Háttér eltüntetése */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5); /* Fehér, áttetsző */
+  border-radius: 10px; /* Lekerekített */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Ha fölé mész, kicsit látszódjon jobban */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Vékony */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Háttér eltüntetése */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5); /* Fehér, áttetsző */
+  border-radius: 10px; /* Lekerekített */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Ha fölé mész, kicsit látszódjon jobban */
 }
