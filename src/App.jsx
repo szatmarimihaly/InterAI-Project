@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
+import TestAi from "./pages/TestAi";
 import { auth } from "./firebase";
 import LoadingSpinner from "./components/LoadingSpinner";
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} />
+        <Route path="/test" element={<RequireAuth><TestAi /></RequireAuth>} />
       </Routes>
     </Router>
   );
