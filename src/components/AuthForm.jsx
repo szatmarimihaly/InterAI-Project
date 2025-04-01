@@ -23,7 +23,7 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
             } else {
                 await signInWithEmailAndPassword(auth, email, password);
             }
-            navigate("/dashboard");
+            navigate("/welcome");
         } catch (error) {
             console.log(error);
             if (text === "Sign Up" && error.code === "auth/email-already-in-use") {
