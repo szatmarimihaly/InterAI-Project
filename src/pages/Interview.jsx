@@ -5,6 +5,10 @@ import SearchBar from '../components/SearchBar';
 
 const Interview = () => {
 
+  const [category, setCategory] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const cardData = [
     {
       id : 1,
@@ -183,8 +187,7 @@ const Interview = () => {
     }
   ]; 
 
-  const [category, setCategory] = useState("all");
-  const [searchTerm, setSearchTerm] = useState("");
+  
 
   const filteredData = cardData.filter((card) =>
     (category === "all" || card.category === category) &&
@@ -193,20 +196,31 @@ const Interview = () => {
 
   return (
     <>
-      <div className='flex flex-col items-center justify-evenly gap-6 mb-12'>
-        <SearchBar onSearch={setSearchTerm} />
-        <DropdownFilter setCategory={setCategory} category={category} />
-      </div>
+      <div className='min-h-screen'> {/* Wrapper div hozzáadva */}
+        <div className='flex flex-col items-center justify-evenly gap-6'>
+          <SearchBar onSearch={setSearchTerm} />
+          <DropdownFilter 
+          setCategory={setCategory} 
+          category={category} 
+          dropdownOpen={dropdownOpen}
+          setDropdownOpen={setDropdownOpen}/>
+        </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mr-10 ml-10'>
-        {filteredData.map((card) => (
-          <InterviewCard
-            key={card.id}
-            language={card.language}
-            description={card.description}
-            image={card.image}
-          />
-        ))}
+        {/* Csak ezt a div-et módosítottuk - margin-top hozzáadva */}
+        <div className={`
+            grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-10
+            transition-all duration-300 ease-in-out
+            ${dropdownOpen ? 'mt-[180px]' : 'mt-12'}
+        `}>
+          {filteredData.map((card) => (
+            <InterviewCard
+              key={card.id}
+              language={card.language}
+              description={card.description}
+              image={card.image}
+            />
+          ))}
+        </div>
       </div>
     </>
   )

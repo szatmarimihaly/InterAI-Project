@@ -20,7 +20,6 @@ const InterviewCard = ({ language, image, description, id}) => {
             src={`./card-svg/${image}.svg`} 
             alt={`Interview Card ${language}`} 
             className='w-20 md:w-28 transition-transform duration-500 
-                      group-hover:scale-110 group-hover:rotate-3 
                       drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]'
         />
     </div>
