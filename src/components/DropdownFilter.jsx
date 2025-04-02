@@ -12,28 +12,61 @@ const DropdownFilter = ({ setCategory, category }) => {
 
     return (
 
-        <div className=''>
+        // Container komponens a szűrő és kártyák számára
+        <div className="space-y-6">
+            {/* Szűrő container fix magassággal */}
+            <div className="h-[40px]"> {/* Állítsd be a filter gomb magasságának megfelelően */}
+                <div className='relative'>
+                    <button
+                        onClick={() => setDropdownOpen(!dropdownOpen)}
+                        className='flex items-center gap-2 px-4 py-2.5 bg-gray-800/40 
+                                backdrop-blur-sm rounded-xl border border-gray-700/50 
+                                shadow-lg hover:bg-gray-700/50 transition-all duration-300 
+                                text-gray-200 font-medium group'
+                    >
+                        <i className={`${category === "all" ? "ri-filter-line" : "ri-filter-fill"} 
+                                    group-hover:rotate-12 transform transition-transform duration-300`}>
+                        </i>
+                        Filter
+                    </button>
 
-            {/* Filter Button */}
-            <div className='relative'>
-                <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className='flex items-center gap-2 px-4 py-2 bg-gray-500 rounded-lg shadow-md hover:bg-gray-600 transition duration-500'
-                >
-                <i className={category === "all" ? "ri-filter-line" : "ri-filter-fill"}></i>
-                Filter
-                </button>
-
-                {dropdownOpen && (
-                <div className='absolute left-0 top-12 bg-gray-500 shadow-lg rounded-lg w-40 text-center'>
-                    <button onClick={() => handleFilterSelect("all")} className='block w-full py-2 hover:bg-gray-400 rounded-lg'>All</button>
-                    <button onClick={() => handleFilterSelect("programming")} className='block w-full py-2 hover:bg-gray-400 rounded-lg'>Programming</button>
-                    <button onClick={() => handleFilterSelect("company")} className='block w-full py-2 hover:bg-gray-400 rounded-lg'>Company</button>
-                    <button onClick={() => handleFilterSelect("framework")} className='block w-full py-2 hover:bg-gray-400 rounded-lg'>Framework</button>
+                    {/* Módosított dropdown */}
+                    <div className={`
+                        mt-2 w-44 transition-all duration-300 origin-top
+                        ${dropdownOpen 
+                            ? 'opacity-100 h-auto transform scale-y-100' 
+                            : 'opacity-0 h-0 transform scale-y-0'}
+                    `}>
+                        <div className='bg-gray-800/40 backdrop-blur-lg 
+                                    shadow-xl rounded-xl border border-gray-700/50 
+                                    overflow-hidden'>
+                            {[
+                                { id: 'all', label: 'All' },
+                                { id: 'programming', label: 'Programming' },
+                                { id: 'company', label: 'Company' },
+                                { id: 'framework', label: 'Framework' }
+                            ].map((item) => (
+                                <button 
+                                    key={item.id}
+                                    onClick={() => handleFilterSelect(item.id)}
+                                    className={`block w-full px-4 py-2.5 text-left hover:bg-gray-700/50 
+                                            transition-all duration-300 text-gray-200
+                                            ${category === item.id ? 'bg-gray-700/50 font-medium' : ''}
+                                            first:rounded-t-xl last:rounded-b-xl`}
+                                >
+                                    {item.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-                )}
-            </div>            
-        </div>
+            </div>
+
+    {/* Kártya grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* ... kártya komponensek ... */}
+    </div>
+</div>
   
     )
 }
