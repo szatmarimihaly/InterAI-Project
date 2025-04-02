@@ -40,7 +40,7 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-auto bg-center" 
              style={{ backgroundImage: "url('/bg.png')" }}>
-            <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-96">
+            <div className="bg-gray-700/50 p-8 rounded-lg shadow-lg w-96">
                 <h1 className="text-2xl text-white font-bold mb-6">{text}</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <label>Email:</label>
@@ -68,7 +68,7 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
                     {error && <p className="text-red-500 mt-4 mb-4 text-sm text-center">{error}</p>}
                     <button 
                         type="submit"
-                        className="text-white bg-gray-800 transition duration-300 ease-in-out hover:bg-gray-600 w-full rounded-lg h-10">
+                        className="text-white bg-gray-600/50 transition duration-300 ease-in-out hover:bg-gray-600 w-full rounded-lg h-10">
                         {text}
                     </button>
                 </form>
