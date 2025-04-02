@@ -15,10 +15,10 @@ const InterviewCard = ({ language, image, description, id}) => {
             <img 
             src={`./card-svg/${image}.svg`} 
             alt={`Interview Card ${language}`} 
-            className='w-30 mb-10'/>
+            className='w-20 md:w-30 mb-10'/>
         </div>
 
-        <div className='mb-2'>
+        <div className='mb-2 md:text-2xl'>
             <h2 className=''>{language}</h2>
         </div>
 

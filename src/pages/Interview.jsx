@@ -1,139 +1,212 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InterviewCard from '../components/InterviewCard'
+import DropdownFilter from '../components/DropdownFilter';
+import SearchBar from '../components/SearchBar';
 
 const Interview = () => {
 
   const cardData = [
     {
       id : 1,
-      language : "Python",
+      language : "Next.js",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "python" 
+      image : "nextjs",
+      category : "framework"
     },
     {
       id : 2,
       language : "Javascript",
       description: "The AI is gonna ask you questions depending on your skill level.",
-      image : "javascript"
+      image : "javascript",
+      category : "programming"
     },
     {
       id : 3,
       language : "GO",
       description: "The AI is gonna ask you questions depending on your skill level.",
-      image : "go"
-    },
-    {
-      id : 3,
-      language : "CSS",
-      description: "The AI is gonna ask you questions depending on your skill level.",
-      image : "css"
+      image : "go",
+      category : "programming"
     },
     {
       id : 4,
-      language : "C++",
-      description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "cpp"
+      language : "CSS",
+      description: "The AI is gonna ask you questions depending on your skill level.",
+      image : "css",
+      category : "programming"
     },
     {
       id : 5,
-      language : "Java",
+      language : "C++",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "java"
+      image : "cpp",
+      category : "programming"
     },
     {
       id : 6,
-      language : "Next.js",
+      language : "Java",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "nextjs"
+      image : "java",
+      category : "programming"
     },
     {
       id : 7,
-      language : "PHP",
+      language : "Python",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "php"
+      image : "python",
+      category : "programming" 
     },
     {
       id : 8,
-      language : "React",
+      language : "PHP",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "react"
+      image : "php",
+      category : "programming"
     },
     {
       id : 9,
-      language : "Ruby",
+      language : "React",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "ruby"
+      image : "react",
+      category : "framework"
     },
     {
       id : 10,
-      language : "Swift",
+      language : "Ruby",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "swift"
+      image : "ruby",
+      category : "programming"
     },
     {
       id : 11,
-      language : "Tailwind",
+      language : "Swift",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "tailwind"
+      image : "swift",
+      category : "programming"
     },
     {
       id : 12,
-      language : "Typescript",
+      language : "Tailwind",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "typescript"
+      image : "tailwind",
+      category : "framework"
     },
     {
       id : 13,
-      language : "HTML",
+      language : "Typescript",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "html"
+      image : "typescript",
+      category : "programming"
     },
     {
       id : 14,
-      language : "Google",
+      language : "HTML",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "google"
+      image : "html",
+      category : "programming"
     },
     {
       id : 15,
-      language : "Meta",
+      language : "Google",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "meta"
+      image : "google",
+      category : "company"
     },
     {
       id : 16,
-      language : "Microsoft",
+      language : "Meta",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "microsoft"
+      image : "meta",
+      category : "company"
     },
     {
       id : 17,
-      language : "Amazon",
+      language : "Microsoft",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "amazon"
+      image : "microsoft",
+      category : "company"
     },
     {
       id : 18,
+      language : "Amazon",
+      description: "The AI is gonna ask you, 5 question depending on your skill level.",
+      image : "amazon",
+      category : "company"
+    },
+    {
+      id : 19,
       language : "SAP",
       description: "The AI is gonna ask you, 5 question depending on your skill level.",
-      image : "sap"
+      image : "sap",
+      category : "company"
+    },
+    {
+      id : 20,
+      language : "Cisco",
+      description: "The AI is gonna ask you, 5 question depending on your skill level.",
+      image : "cisco",
+      category : "company"
+    },
+    {
+      id : 21,
+      language : "Salesforce",
+      description: "The AI is gonna ask you, 5 question depending on your skill level.",
+      image : "salesforce",
+      category : "company"
+    },
+    {
+      id : 22,
+      language : "Cognizant",
+      description: "The AI is gonna ask you, 5 question depending on your skill level.",
+      image : "cognizant",
+      category : "company"
+    },
+    {
+      id : 23,
+      language : "Dell",
+      description: "The AI is gonna ask you, 5 question depending on your skill level.",
+      image : "dell",
+      category : "company"
+    },
+    {
+      id : 24,
+      language : "HP",
+      description: "The AI is gonna ask you, 5 question depending on your skill level.",
+      image : "hp",
+      category : "company"
+    },
+    {
+      id : 25,
+      language : "Visa",
+      description: "The AI is gonna ask you, 5 question depending on your skill level.",
+      image : "visa",
+      category : "company"
     }
   ]; 
 
+  const [category, setCategory] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredData = cardData.filter((card) =>
+    (category === "all" || card.category === category) &&
+    (searchTerm.trim() === "" || card.language.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
+
   return (
     <>
-
-      <h1 className='p-10 text-center text-6xl'>Interviews</h1>
+      <div className='flex flex-col items-center justify-evenly gap-6 mb-12'>
+        <SearchBar onSearch={setSearchTerm} />
+        <DropdownFilter setCategory={setCategory} category={category} />
+      </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mr-10 ml-10'>
-      {cardData.map((card) => (
-      <InterviewCard  
-        key={card.id}
-        language={card.language} 
-        description={card.description}
-        image={card.image}
-      />
-    ))}
+        {filteredData.map((card) => (
+          <InterviewCard
+            key={card.id}
+            language={card.language}
+            description={card.description}
+            image={card.image}
+          />
+        ))}
       </div>
     </>
   )

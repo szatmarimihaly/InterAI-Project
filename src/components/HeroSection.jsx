@@ -2,7 +2,6 @@ import React from 'react'
 import "remixicon/fonts/remixicon.css";
 import { useNavigate } from 'react-router-dom';
 
-
 const HeroSection = () => {
 
   const navigate = useNavigate();
