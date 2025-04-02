@@ -7,31 +7,31 @@ const DropdownFilter = ({ setCategory, category, dropdownOpen, setDropdownOpen }
   const handleFilterSelect = (category) => {
     setCategory(category);
     setDropdownOpen(false);
-  }
+  };
 
     return (
 
-        <div className="relative"> {/* Eltávolítottuk a space-y-6-ot */}
-        <button
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-            className='flex items-center gap-2 px-4 py-2.5 bg-gray-800/40 
-                      backdrop-blur-sm rounded-xl border border-gray-700/50 
-                      shadow-lg hover:bg-gray-700/50 transition-all duration-300 
-                      text-gray-200 font-medium group'
-        >
-            <i className={`${category === "all" ? "ri-filter-line" : "ri-filter-fill"} 
-                          transform transition-transform duration-300`}>
-            </i>
-            Filter
-        </button>
+        <div className="relative">
+            <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className='flex items-center gap-2 px-4 py-2.5 bg-gray-800/40 
+                        backdrop-blur-sm rounded-xl border border-gray-700/50 
+                        shadow-lg hover:bg-gray-700/50 transition-all duration-300 
+                        text-gray-200 font-medium group'
+            >
+                <i className={`${category === "all" ? "ri-filter-line" : "ri-filter-fill"} 
+                            transform transition-transform duration-300`}>
+                </i>
+                Filter
+            </button>
 
-        <div className={`
-            absolute mt-2 w-44 transition-all duration-300 origin-top z-50
-            ${dropdownOpen 
-                ? 'opacity-100 h-auto transform scale-y-100' 
-                : 'opacity-0 h-0 transform scale-y-0'}
-        `}>
-            <div className='bg-gray-800/40 backdrop-blur-lg 
+            <div className={`
+                absolute mt-2 w-44 transition-all duration-300 origin-top z-50
+                ${dropdownOpen 
+                    ? 'opacity-100 h-auto transform scale-y-100' 
+                    : 'opacity-0 h-0 transform scale-y-0'}
+            `}>
+                <div className='bg-gray-800/40 backdrop-blur-lg 
                           shadow-xl rounded-xl border border-gray-700/50 
                           overflow-hidden'>
                 {[

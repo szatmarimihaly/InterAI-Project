@@ -196,7 +196,7 @@ const Interview = () => {
 
   return (
     <>
-      <div className='min-h-screen'> {/* Wrapper div hozzáadva */}
+      <div className='min-h-screen'>
         <div className='flex flex-col items-center justify-evenly gap-6'>
           <SearchBar onSearch={setSearchTerm} />
           <DropdownFilter 
@@ -206,7 +206,6 @@ const Interview = () => {
           setDropdownOpen={setDropdownOpen}/>
         </div>
 
-        {/* Csak ezt a div-et módosítottuk - margin-top hozzáadva */}
         <div className={`
             grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-10
             transition-all duration-300 ease-in-out
