@@ -41,9 +41,7 @@ const Welcome = () => {
     return (
         <div className="flex flex-col items-center mr-4 ml-4">
             <Navbar text="Log Out" onClick={handleLogout}/>
-            <HeroSection />
-
-            
+            <HeroSection username={username}/>
         </div>
     );
 };

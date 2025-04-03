@@ -187,8 +187,6 @@ const Interview = () => {
     }
   ]; 
 
-  
-
   const filteredData = cardData.filter((card) =>
     (category === "all" || card.category === category) &&
     (searchTerm.trim() === "" || card.language.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -196,7 +194,21 @@ const Interview = () => {
 
   return (
     <>
+
+      <div className='flex items-center justify-end py-4 px-4'>
+        <div className="px-3 py-1 bg-gray-800/40 backdrop-blur-sm 
+                        rounded-full border border-gray-700/50 
+                        shadow-lg">
+            <span className="text-sm text-gray-400">
+                <span className="inline-block w-2 h-2 bg-green-500 
+                            rounded-full mr-2" />
+                Online
+            </span>
+        </div>
+      </div>
+
       <div className='min-h-screen'>
+
         <div className='flex flex-col items-center justify-evenly gap-6'>
           <SearchBar onSearch={setSearchTerm} />
           <DropdownFilter 
