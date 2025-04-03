@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { auth } from "../firebase";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, googleProvider, githubProvider } from "../firebase";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Divider from "./Divider";
 
@@ -13,6 +13,30 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
 
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
+    };
+
+    const handleGoogleSignIn = async () => {
+        try{
+            await signInWithPopup(auth, googleProvider);
+            navigate("/welcome");
+        }catch (error){
+            console.log(error);
+            setError("Could not sign in with Google.")
+        }
+    }
+
+    const handleGithubSignIn = async () => {
+        try{
+            await signInWithPopup(auth, githubProvider);
+            navigate("/welcome");
+        }catch (error){
+            console.log(error);
+            if(error.code === 'auth/account-exists-with-different-credential'){
+                setError("An account already exists with the same email address but different sign-in credentials.");
+            }else{
+                setError("Could not sign in with GitHub");
+            }
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -74,6 +98,22 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
                 </form>
 
                 <Divider />
+
+                <button
+                onClick={handleGoogleSignIn}
+                className="flex items-center justify-center gap-2 w-full px-5 py-2.5  bg-gray-800/40 backdrop-blur-sm rounded-xl border border-gray-700/50 shadow-lg hover:bg-gray-700/50 transition-all duration-300 text-gray-200 font-medium mb-6"
+                >
+                    <img src="./google.svg" alt="Google" className="w-5 h-5"/>
+                    Sign In With Google
+                </button>
+
+                <button
+                onClick={handleGithubSignIn}
+                className="flex items-center justify-center gap-2 w-full px-5 py-2.5  bg-gray-800/40 backdrop-blur-sm rounded-xl border border-gray-700/50 shadow-lg hover:bg-gray-700/50 transition-all duration-300 text-gray-200 font-medium mb-6"
+                >
+                    <i className="ri-github-fill text-xl"></i>
+                    Continue With GitHub
+                </button>
 
                 <div className="flex gap-2 mt-4 items-center justify-center"> 
                     <p>{alreadyOrNot}</p>
