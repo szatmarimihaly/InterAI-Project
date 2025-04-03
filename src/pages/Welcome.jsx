@@ -39,7 +39,7 @@ const Welcome = () => {
     const username = user.email.split("@")[0];
 
     return (
-        <div className="flex flex-col items-center mr-4 ml-4">
+        <div className="flex flex-col items-center justify-center mr-4 ml-4">
             <Navbar text="Log Out" onClick={handleLogout}/>
             <HeroSection username={username}/>
         </div>

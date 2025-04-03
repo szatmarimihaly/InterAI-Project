@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { auth, googleProvider, githubProvider } from "../firebase";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Divider from "./Divider";
 
@@ -17,7 +17,7 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
 
     const handleGoogleSignIn = async () => {
         try{
-            await signInWithPopup(auth, googleProvider);
+            await signInWithRedirect(auth, googleProvider);
             navigate("/welcome");
         }catch (error){
             console.log(error);

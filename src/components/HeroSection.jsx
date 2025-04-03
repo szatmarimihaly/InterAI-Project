@@ -12,7 +12,7 @@ const HeroSection = ({ username }) => {
 
   return (
     <div className="mt-20 flex flex-col items-center gap-10">
-      <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-gray-300 to-gray-500/50 
+      <h1 className="text-2xl text-center md:text-5xl font-bold bg-gradient-to-r from-gray-300 to-gray-500/50 
                     text-transparent bg-clip-text">
           Welcome, {username}!
       </h1>
