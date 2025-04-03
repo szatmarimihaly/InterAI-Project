@@ -6,12 +6,12 @@ import { getAuth, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC4wgrs2AO2MA4puPC0F-tiZkesbpBfokU",
-  authDomain: "interai-c62e8.firebaseapp.com",
-  projectId: "interai-c62e8",
-  storageBucket: "interai-c62e8.firebasestorage.app",
-  messagingSenderId: "389482869583",
-  appId: "1:389482869583:web:fb322764625f491bed8b3a"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase
