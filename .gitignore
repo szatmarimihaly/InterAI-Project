@@ -2,8 +2,6 @@
 .env
 .env.local
 
-firebase.js
-
 logs
 *.log
 npm-debug.log*

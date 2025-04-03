@@ -73,19 +73,28 @@ const AuthForm = ({ text, alreadyOrNot, RouteToButton, onClick }) => {
                         placeholder="example@gmail.com" 
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full p-2 border-2 rounded-lg focus:outline-none" />
+                        className="w-full px-4 py-2.5 bg-gray-800/40 backdrop-blur-sm 
+                                rounded-xl border border-gray-700/50 
+                                focus:border-gray-500 focus:bg-gray-700/50
+                                transition-all duration-300 
+                                text-gray-200 placeholder-gray-500
+                                focus:outline-none focus:ring-1 focus:ring-gray-500" 
+                    />
                     <label>Password:</label>
-                    <div className="flex items-center border-2 rounded-lg">
+                    <div className="flex items-center bg-gray-800/40 backdrop-blur-sm rounded-xl border border-gray-700/50 focus-within:border-gray-500 focus-within:bg-gray-700/50 transition-all duration-300"
+                    >
                         <input 
                             type={isVisible ? "text" : "password"}
                             placeholder="Password" 
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-2 rounded-lg focus:outline-none" />
+                            className="w-full px-4 py-2.5 bg-transparent text-gray-200 placeholder-gray-500 focus:outline-none" /
+                        >
                         <button 
                             type="button" 
                             onClick={toggleVisibility}
-                            className="text-white p-2 ">
+                            className="px-4 text-gray-400 hover:text-gray-200 transition-colors duration-300"
+                        >
                                 {isVisible ? <i className="ri-eye-off-fill"></i> : <i className="ri-eye-fill"></i>}
                         </button>
                     </div>
