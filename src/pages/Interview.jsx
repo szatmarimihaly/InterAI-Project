@@ -195,7 +195,11 @@ const Interview = () => {
   return (
     <>
 
-      <div className='flex items-center justify-end py-4 px-4'>
+      <div className='flex items-center justify-between py-4 px-4'>
+        <img 
+        src="./interai_logo_white_no_bg.png" 
+        alt="InterAI Logo" 
+        className='w-30 md:w-40'/>
         <div className="px-3 py-1 bg-gray-800/40 backdrop-blur-sm 
                         rounded-full border border-gray-700/50 
                         shadow-lg">
