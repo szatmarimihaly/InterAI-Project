@@ -8,7 +8,7 @@ import TestAi from "./pages/TestAi";
 import { auth } from "./firebase";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Interview from "./pages/Interview";
-import InterviewPage from "./pages/InterviewPage";
+import Quiz from "./pages/Quiz";
 
 const RequireAuth = ({ children }) => {
     const [user, setUser] = useState(undefined);
@@ -33,7 +33,7 @@ const App = () => {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/welcome" element={<RequireAuth><Welcome /></RequireAuth>} />
         <Route path="/interview" element={<RequireAuth><Interview /></RequireAuth>} />
-        <Route path="/interviewpage" element={<RequireAuth><InterviewPage /></RequireAuth>} />
+        <Route path="/quiz" element={<RequireAuth><Quiz /></RequireAuth>}></Route>
         <Route path="/chat" element={<RequireAuth><TestAi /></RequireAuth>} />
       </Routes>
     </Router>

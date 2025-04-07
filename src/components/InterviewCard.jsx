@@ -1,12 +1,20 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const InterviewCard = ({ language, image, description, id}) => {
+const InterviewCard = ({ language, image, description, id, category}) => {
 
     const navigate = useNavigate();
   
     const handleInterviewClick = () => {
-        navigate(`/interview/${language.toLowerCase()}`);
+        navigate(`/quiz`, {
+            state : {
+                id, 
+                language,
+                image,
+                description,
+                category
+            }
+        });
     };
 
   return (
@@ -59,7 +67,6 @@ const InterviewCard = ({ language, image, description, id}) => {
 
         <div className="absolute inset-0 bg-gradient-to-br from-transparent 
                     to-gray-800/20 pointer-events-none">
-
         </div>
     </div>
   )
