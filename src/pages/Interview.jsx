@@ -2,12 +2,18 @@ import React, { useState } from 'react'
 import InterviewCard from '../components/InterviewCard'
 import DropdownFilter from '../components/DropdownFilter';
 import SearchBar from '../components/SearchBar';
+import { useNavigate } from 'react-router-dom';
 
 const Interview = () => {
 
   const [category, setCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const handleWelcome = () => {
+    navigate("/welcome")
+  };
 
   const cardData = [
     {
@@ -196,10 +202,19 @@ const Interview = () => {
     <>
 
       <div className='flex items-center justify-between py-4 px-4'>
-        <img 
-        src="./interai_logo_white_no_bg.png" 
-        alt="InterAI Logo" 
-        className='w-30 md:w-40'/>
+        <div className='flex items-center gap-2'>
+          <button 
+            className='px-3 py-1 bg-gray-800/40 backdrop-blur-sm rounded-full border border-gray-700/50 shadow-lg'
+            onClick={handleWelcome}
+          >
+            <i className="ri-arrow-drop-left-line text-gray-400 text-2xl md:text-3xl"></i>
+          </button>
+
+          <img 
+          src="./interai_logo_white_no_bg.png" 
+          alt="InterAI Logo" 
+          className='w-30 md:w-40'/>
+        </div>
         <div className="px-3 py-1 bg-gray-800/40 backdrop-blur-sm 
                         rounded-full border border-gray-700/50 
                         shadow-lg">
